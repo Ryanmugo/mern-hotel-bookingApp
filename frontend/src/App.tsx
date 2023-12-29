@@ -5,6 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Layouts from "./Layouts/Layouts";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -26,6 +27,15 @@ function App() {
             </Layouts>
           }
         />
+        <Route
+          path="/register"
+          element={
+            <Layouts>
+              <Register />
+            </Layouts>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );
