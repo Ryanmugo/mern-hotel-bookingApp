@@ -88,3 +88,11 @@ export const loginUser = async (
     res.status(500).json({ message: "Something went wrong" });
   }
 };
+
+//logout
+export const logoutUser = (req: Request, res: Response, next: NextFunction) => {
+  res.cookie("auth_token", "", {
+    expires: new Date(0),
+  });
+  res.send();
+};

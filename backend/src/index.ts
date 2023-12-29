@@ -4,6 +4,7 @@ import morgan from "morgan";
 import "dotenv/config";
 import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes";
+import cookieParser from "cookie-parser";
 
 mongoose.connect(process.env.MONGO_URI as string);
 
@@ -12,6 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 //middlewares
+app.use(cookieParser());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
