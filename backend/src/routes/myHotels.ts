@@ -1,5 +1,10 @@
 import express from "express";
-import { getAllHotels, hotels } from "../controllers/hotelContollers";
+import {
+  editHotel,
+  getAllHotels,
+  hotels,
+  takeHotel,
+} from "../controllers/hotelContollers";
 import multer from "multer";
 import { verifyToken } from "../middlewares/auth";
 import { body } from "express-validator";
@@ -44,5 +49,11 @@ router.post(
 
 //Getting all hotels
 router.get("/", verifyToken, getAllHotels);
+
+//api for taking you to the page you want to edit
+router.get("/:id", verifyToken, takeHotel);
+
+//api for updating
+router.put("/:hotelId", verifyToken, upload.array("imageFiles"), editHotel);
 
 export default router;
