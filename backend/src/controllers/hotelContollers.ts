@@ -1,6 +1,22 @@
 import { NextFunction, Request, Response } from "express";
 import cloudinary from "cloudinary";
 import Hotel, { HotelType } from "../models/hotel";
+
+//This is for getting all hotels
+export const getAllHotels = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const hotels = await Hotel.find({ userId: req.userId });
+    res.json(hotels);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching hotels" });
+  }
+};
+
+//this is for adding a hotel
 export const hotels = async (
   req: Request,
   res: Response,

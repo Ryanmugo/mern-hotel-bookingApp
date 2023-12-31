@@ -1,5 +1,5 @@
 import express from "express";
-import { hotels } from "../controllers/hotelContollers";
+import { getAllHotels, hotels } from "../controllers/hotelContollers";
 import multer from "multer";
 import { verifyToken } from "../middlewares/auth";
 import { body } from "express-validator";
@@ -41,5 +41,8 @@ router.post(
   upload.array("imageFiles", 6),
   hotels
 );
+
+//Getting all hotels
+router.get("/", verifyToken, getAllHotels);
 
 export default router;
