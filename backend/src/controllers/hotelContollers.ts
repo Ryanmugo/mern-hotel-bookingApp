@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import cloudinary from "cloudinary";
-import Hotel, { HotelType } from "../models/hotel";
+import Hotel from "../models/hotel";
+import { HotelType } from "../shared/types";
 
 //This is for getting all hotels
 export const getAllHotels = async (
