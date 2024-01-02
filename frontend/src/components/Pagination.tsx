@@ -5,11 +5,11 @@ export type Props = {
 };
 
 const Pagination = ({ page, pages, onPageChange }: Props) => {
-  //We are creating pagination by use of this code!!
   const pageNumbers = [];
   for (let i = 1; i <= pages; i++) {
     pageNumbers.push(i);
   }
+
   return (
     <div className="flex justify-center">
       <ul className="flex border border-slate-300">
