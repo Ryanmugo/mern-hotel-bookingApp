@@ -137,6 +137,10 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
           id="payment-element"
           className="border rounded-md p-2 text-sm"
         />
+        <span className="text-xs mb-3 font-semibold">
+          NB: 4242 4242 4242 4242 as card number to mimic a successful
+          transaction. (developer version not a real version)
+        </span>
       </div>
 
       <div className="flex justify-end">
