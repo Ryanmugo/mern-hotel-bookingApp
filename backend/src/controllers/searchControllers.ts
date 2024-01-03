@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import Hotel from "../models/hotel";
 import { HotelSearchResponse } from "../shared/types";
+import { validationResult } from "express-validator";
 
 //search bar and filters functionality!!
 export const searchBar = async (
@@ -106,4 +107,26 @@ const constructSearchQuery = (queryParams: any) => {
   }
 
   return constructedQuery;
+};
+
+//View details API Controller
+export const viewDetails = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const id = req.params.id.toString();
+
+  try {
+    const hotel = await Hotel.findById(id);
+    res.json(hotel);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: "Error fetching hotel" });
+  }
 };
