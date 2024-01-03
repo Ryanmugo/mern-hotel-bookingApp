@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import {
+  booking,
   loginUser,
   logoutUser,
   registerUsers,
@@ -8,6 +9,9 @@ import { check } from "express-validator";
 import { verifyToken } from "../middlewares/auth";
 
 const router = express.Router();
+
+//For booking
+router.get("/me", verifyToken, booking);
 
 //regstering a user!!
 router.post(

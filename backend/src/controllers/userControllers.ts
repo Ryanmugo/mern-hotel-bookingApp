@@ -4,6 +4,28 @@ import User from "../models/userModel";
 import { validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
 
+//Booking
+export const booking = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const userId = req.userId;
+
+  try {
+    const user = await User.findById(userId).select("-password");
+
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
 //We are registering all users!!
 export const registerUsers = async (
   req: Request,
