@@ -57,6 +57,21 @@ export const searchBar = async (
   }
 };
 
+//HomePage API
+export const homePage = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const hotels = await Hotel.find().sort("-lastUpdated");
+    res.json(hotels);
+  } catch (error) {
+    console.log("error", error);
+    res.status(500).json({ message: "Error fetching hotels" });
+  }
+};
+
 //Stripe payments!!
 export const stripePayment = async (
   req: Request,

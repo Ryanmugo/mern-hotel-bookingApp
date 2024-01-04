@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  homePage,
   myBookings,
   searchBar,
   stripePayment,
@@ -12,6 +13,9 @@ const router = express.Router();
 
 //Search bar api
 router.get("/search", searchBar);
+
+//Destination/Home Page
+router.get("/", homePage);
 
 //vIEW dETAILS api
 router.get(
